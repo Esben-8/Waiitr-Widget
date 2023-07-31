@@ -1,0 +1,15 @@
+<!-- Example widget code to change button color based on the "color" query parameter -->
+<button class="widget-button" onclick="showAlert()" style="background-color: {{COLOR_FROM_URL}};">Click Me</button>
+
+<script>
+  function showAlert() {
+    alert("Hello! You clicked the button.");
+  }
+
+  // Read the "color" query parameter from the URL and set the button color
+  const urlParams = new URLSearchParams(window.location.search);
+  const color = urlParams.get("color");
+  if (color) {
+    document.querySelector(".widget-button").style.backgroundColor = color;
+  }
+</script>
