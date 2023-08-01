@@ -1,4 +1,9 @@
 <html>
+  <head>
+    <!-- Other meta tags and stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  </head>
+  
   <style>
     .widget-container {
       border: 1px solid;
@@ -44,6 +49,9 @@
       width: 100%;
       display: none;
     }
+    .widget-text-form {
+      display: none;
+    }
     .widget-form {
       background: #F3F5F8;
       height: 45px;
@@ -83,6 +91,41 @@
       font-weight: 500;
       font-size: 14px;
     }
+    .widget-icon-form {
+      display: grid;
+      align-items: center;
+      border-radius: 10px; 
+      padding: 10px 15px 10px 20px;
+      background: #F3F5F8; 
+      border: 1px solid;
+      border-color: #F3F5F8;
+      width: -webkit-fill-available;
+      grid-template-columns: auto auto;
+    }
+    .widget-icon-field {
+      background: #F3F5F8;
+      height: 45px;
+      width: 100%;
+      padding: 0;
+      border: none;
+      font-family: Inter;
+      font-weight: 500;
+      border-radius: 10px;
+    }
+    .widget-icon-field:focus-visible {
+      outline: none
+    }
+    .widget-icon-button {
+      display: grid;
+      box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.1);
+      justify-self: flex-end;
+      background: white;
+      cursor: pointer; 
+      place-items: center;
+      aspect-ratio: 1;
+      height: 40px;
+      border-radius: 10px;
+    }
   </style>
 
   <div class="widget-container">
@@ -91,7 +134,13 @@
       <div class="widget-header-divider"></div>
       <p class="widget-subheader"></p>
     </div>
-    <div>
+    <div class="widget-icon-form">
+      <input placeholder="Email" class="widget-icon-field"/>
+      <div class="widget-icon-button">
+        <i style="color: #242526" class="fas fa-handshake"></i>
+      </div>
+    </div>
+    <div class="widget-text-form">
       <input placeholder="Email" class="widget-form"/>
       <div class="widget-button">Signup</div>
     </div>
@@ -130,6 +179,11 @@
     if (textAlign) {
       document.querySelector(".widget-header").style.textAlign = textAlign;
       document.querySelector(".widget-free").style.textAlign = textAlign;
+    }
+    const buttonStyle = urlParams.get("buttonStyle");
+    if (buttonStyle === "text") {
+      document.querySelector(".widget-text-form").style.display = "block";
+      document.querySelector(".widget-icon-form").style.display = "none";
     }
   </script>
 </html>
