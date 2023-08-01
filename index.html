@@ -130,7 +130,7 @@
 
   <div class="widget-container">
     <div class="headers-container">
-      <p class="widget-header">Join the waitlist</p>
+      <p class="widget-header">Header</p>
       <div class="widget-header-divider"></div>
       <p class="widget-subheader"></p>
     </div>
@@ -148,6 +148,15 @@
   </div>
 
   <script>
+
+    function isItWhite(color) {
+      if (color === "white" || /^#?(?:f{6}|f{3})$/i.test(color)) {
+          return "#E9EAEC"
+      } else {
+          return "transparent"
+      }
+    }
+
     const urlParams = new URLSearchParams(window.location.search);
     const backgroundColor = urlParams.get("backgroundColor");
     if (backgroundColor) {
@@ -164,6 +173,7 @@
     const formColor = urlParams.get("formColor");
     if (formColor) {
       document.querySelector(".widget-form").style.backgroundColor = formColor;
+      document.querySelector(".widget-form").style.borderColor = isItWhite(formColor)
     }
     const header = urlParams.get("header");
     if (header) {
