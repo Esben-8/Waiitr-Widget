@@ -8,14 +8,18 @@
     .widget-container {
       border: 1px solid;
       border-color: #E9EAEC;
-      gap: 15px;
       background-color: white; /* You can set this to any background color you desire or use a CSS variable for dynamic value */
-      width: 400px;
       padding: 30px 40px;
       border-radius: 10px;
+      background-color: white;
+      display: grid;
+      place-items: center;
+    }
+    .widget {
+      gap: 15px;
+      width: 400px;
       display: flex;
       flex-direction: column;
-      background-color: white;
     }
     .headers-container {
       display: flex;
@@ -139,25 +143,26 @@
   </style>
 
   <div class="widget-container">
-    <div class="headers-container">
-      <p class="widget-header">Header</p>
-      <div class="widget-header-divider"></div>
-      <p class="widget-subheader"></p>
-    </div>
-    <div class="widget-icon-form">
-      <input placeholder="Email" class="widget-icon-field"/>
-      <div class="widget-icon-button">
-        <i style="color: #242526" class="fas fa-handshake"></i>
+    <div class="widget">
+      <div class="headers-container">
+        <p class="widget-header">Header</p>
+        <div class="widget-header-divider"></div>
+        <p class="widget-subheader"></p>
+      </div>
+      <div class="widget-icon-form">
+        <input placeholder="Email" class="widget-icon-field"/>
+        <div class="widget-icon-button">
+          <i style="color: #242526" class="fas fa-handshake"></i>
+        </div>
+      </div>
+      <div class="widget-text-form">
+        <input placeholder="Email" class="widget-form"/>
+        <div class="widget-button">Signup</div>
+      </div>
+      <div class="widget-free">
+        <p class="widget-free-text">Made for free with Waiitr</p>
       </div>
     </div>
-    <div class="widget-text-form">
-      <input placeholder="Email" class="widget-form"/>
-      <div class="widget-button">Signup</div>
-    </div>
-    <div class="widget-free">
-      <p class="widget-free-text">Made for free with Waiitr</p>
-    </div>
-    
   </div>
 
   <script>
