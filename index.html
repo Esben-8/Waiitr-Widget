@@ -1,15 +1,135 @@
-<!-- Example widget code to change button color based on the "color" query parameter -->
-<button class="widget-button" onclick="showAlert()" style="background-color: {{COLOR_FROM_URL}};">Click Me</button>
+<html>
+  <style>
+    .widget-container {
+      border: 1px solid;
+      border-color: #E9EAEC;
+      gap: 15px;
+      background-color: white; /* You can set this to any background color you desire or use a CSS variable for dynamic value */
+      width: 400px;
+      padding: 30px 40px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      background-color: white;
+    }
+    .headers-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .widget-header {
+      align-self: center;
+      text-align: center;
+      font-size: 30px;
+      font-family: Inter;
+      font-weight: 800;
+      color: #242526;
+      width: 100%;
+    }
+    .widget-header-divider {
+      margin: 10px 20px; 
+      width: 2px;
+      border-radius: 100px;
+      background-color: #767C80;
+      display: none;
+    }
+    .widget-subheader {
+      align-self: center; 
+      text-align: center;
+      font-size: 20px;
+      font-family: Inter;
+      font-weight: 700;
+      color: #767C80;
+      width: 100%;
+      display: none;
+    }
+    .widget-form {
+      background: #F3F5F8;
+      height: 45px;
+      width: 100%;
+      padding: 0 15px;
+      border: 1px solid;
+      border-color: #E9EAEC;
+      font-family: Inter;
+      font-weight: 500;
+      border-radius: 10px;
+      margin-bottom: 20px
+      
+    }
+    .widget-form::placeholder {
+      font-size: 14px
+      
+    }
+    .widget-form:focus-visible {
+      outline: none
+    }
+    .widget-button {
+      display: grid;
+      cursor: pointer; 
+      place-items: center;
+      background: #A235E6; 
+      height: 45px;
+      width: 100%;
+      color: white;
+      font-family: Inter;
+      font-weight: 600;
+      border-radius: 10px;
+    }
+    .widget-free {
+      width: 100%;
+      text-align: center; 
+      font-family: Inter;
+      font-weight: 500;
+      font-size: 14px;
+    }
+  </style>
 
-<script>
-  function showAlert() {
-    alert("Hello! You clicked the button.");
-  }
+  <div class="widget-container">
+    <div class="headers-container">
+      <p class="widget-header">Header</p>
+      <div class="widget-header-divider"></div>
+      <p class="widget-subheader"></p>
+    </div>
+    <div>
+      <input placeholder="Email" class="widget-form"/>
+      <div class="widget-button">Signup</div>
+    </div>
+    <p class="widget-free">Made for free with Waiitr</p>
+  </div>
 
-  // Read the "color" query parameter from the URL and set the button color
-  const urlParams = new URLSearchParams(window.location.search);
-  const color = urlParams.get("color");
-  if (color) {
-    document.querySelector(".widget-button").style.backgroundColor = color;
-  }
-</script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const backgroundColor = urlParams.get("backgroundColor");
+    if (backgroundColor) {
+      document.querySelector(".widget-container").style.backgroundColor = backgroundColor;
+    }
+    const buttonColor = urlParams.get("buttonColor");
+    if (buttonColor) {
+      document.querySelector(".widget-button").style.backgroundColor = buttonColor;
+    }
+    const textColor = urlParams.get("textColor");
+    if (textColor) {
+      document.querySelector(".widget-header").style.color = textColor;
+    }
+    const formColor = urlParams.get("formColor");
+    if (formColor) {
+      document.querySelector(".widget-form").style.backgroundColor = formColor;
+    }
+    const header = urlParams.get("header");
+    if (header) {
+      document.querySelector(".widget-header").innerText = header;
+    }
+    const subheader = urlParams.get("subheader");
+    if (subheader) {
+      document.querySelector(".widget-subheader").innerText = subheader;
+      document.querySelector(".widget-subheader").style.display = "block";
+      document.querySelector(".widget-header-divider").style.display = "block";
+    }
+    const textAlign = urlParams.get("textAlign");
+    if (textAlign) {
+      document.querySelector(".widget-header").style.textAlign = textAlign;
+      document.querySelector(".widget-free").style.textAlign = textAlign;
+    }
+  </script>
+</html>
