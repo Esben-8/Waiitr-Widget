@@ -83,6 +83,7 @@
       font-family: Inter;
       font-weight: 600;
       border-radius: 10px;
+      border: 1px solid;
     }
     .widget-free {
       width: 100%;
@@ -161,10 +162,13 @@
     const backgroundColor = urlParams.get("backgroundColor");
     if (backgroundColor) {
       document.querySelector(".widget-container").style.backgroundColor = backgroundColor;
+      document.querySelector(".widget-container").style.borderColor = isItWhite(backgroundColor)
     }
     const buttonColor = urlParams.get("buttonColor");
     if (buttonColor) {
       document.querySelector(".widget-button").style.backgroundColor = buttonColor;
+      document.querySelector(".widget-button").style.borderColor = isItWhite(buttonColor)
+      document.querySelector(".widget-button").style.color = isItWhite(buttonColor) === "#E9EAEC" ? "#242526" : "white"
     }
     const textColor = urlParams.get("textColor");
     if (textColor) {
