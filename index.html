@@ -159,7 +159,7 @@
       </div>
       <div class="widget-text-form">
         <input placeholder="Email" class="widget-form"/>
-        <div class="widget-button">Signup</div>
+        <div onclick="submitEmail()" class="widget-button">Signup</div>
       </div>
       <div class="widget-free">
         <p class="widget-free-text">Made for free with Waiitr</p>
@@ -218,5 +218,42 @@
       document.querySelector(".widget-text-form").style.display = "block";
       document.querySelector(".widget-icon-form").style.display = "none";
     }
+
+    async function callAPIWithFetch(email, widgetId) {
+
+      const apiEndPoint = "https://4651-78-156-111-211.ngrok-free.app/api/handle_new_signup"
+
+      try {
+        const response = await fetch(apiEndPoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'ngrok-skip-browser-warning': 'true'
+          },
+          body: JSON.stringify({
+            email: email,
+            widgetId: widgetId,
+          })
+        });
+
+        console.log(response);
+      } catch (error) {
+        console.error('Fetch Error:', error);
+      }
+    }
+
+
+    const widgetId = urlParams.get("widgetId");
+    async function submitEmail() {
+      let textEmail = document.querySelector(".widget-form")
+      let iconEmail = document.querySelector(".widget-icon-field")
+
+      if (buttonStyle === "text") {
+        callAPIWithFetch(textEmail.value, widgetId)
+      } else {
+        callAPIWithFetch(iconEmail.value, widgetId)
+      }
+    }
+    
   </script>
 </html>
