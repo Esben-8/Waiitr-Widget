@@ -17,7 +17,7 @@
       width: 100%;
     }
     .widget {
-      padding: 30px 40px;
+      padding: 30px 40px 0;
       gap: 15px;
       width: 400px;
       display: flex;
@@ -89,7 +89,7 @@
       font-family: Inter;
       font-weight: 600;
       border-radius: 10px;
-      border: 1px solid;
+      border: 1px solid transparent;
     }
     .widget-free {
       display: grid;
@@ -153,7 +153,7 @@
       </div>
       <div class="widget-icon-form">
         <input placeholder="Email" class="widget-icon-field"/>
-        <div class="widget-icon-button">
+        <div onclick="submitEmail()" class="widget-icon-button">
           <i style="color: #242526" class="fas fa-handshake"></i>
         </div>
       </div>
@@ -161,9 +161,11 @@
         <input placeholder="Email" class="widget-form"/>
         <div onclick="submitEmail()" class="widget-button">Signup</div>
       </div>
-      <div class="widget-free">
-        <p class="widget-free-text">Made for free with Waiitr</p>
-      </div>
+    </div>
+    <iframe class="checkAnimation-white" style="display: none; border: none; background: transparent; padding: 75px 0" width="300" height="150" src="https://rive.app/s/8ta7b0KiBEGKScGbvlvgfQ/embed" allowfullscreen></iframe>
+    <iframe class="checkAnimation-black" style="display: none; border: none; background: transparent; padding: 0" width="300" height="150" src="https://rive.app/s/ftY7Nv5Cg0mvHIn9Yu44wg/embed" allowfullscreen></iframe>
+    <div class="widget-free">
+      <p class="widget-free-text">Made for free with Waiitr</p>
     </div>
   </div>
 
@@ -223,6 +225,12 @@
 
       const apiEndPoint = "https://e0b2-78-156-111-211.ngrok-free.app/api/handle_new_signup"
 
+      if (email.length < 9) {
+        document.querySelector(".widget-form").style.border = "1px solid red";
+        document.querySelector(".widget-icon-form").style.border = "1px solid red";
+        return
+      }
+
       try {
         const response = await fetch(apiEndPoint, {
           method: 'POST',
@@ -240,11 +248,16 @@
       } catch (error) {
         console.error('Fetch Error:', error);
       }
+
+      let checkAnimation = document.querySelector(`.checkAnimation-${backgroundColor ? isItWhite(backgroundColor) === "#E9EAEC" ? "black" : "white" : "black"}`)
+      checkAnimation.style.display = "block"
+      document.querySelector(".widget").style.display = "none";
     }
 
 
     const widgetId = urlParams.get("widgetId");
     async function submitEmail() {
+      
       let textEmail = document.querySelector(".widget-form")
       let iconEmail = document.querySelector(".widget-icon-field")
 
