@@ -19,7 +19,8 @@
     .widget {
       padding: 30px 40px 0;
       gap: 15px;
-      width: 400px;
+      max-width: 400px;
+      width: 98%;
       display: flex;
       flex-direction: column;
     }
@@ -91,8 +92,7 @@
       border-radius: 10px;
       border: 1px solid transparent;
     }
-    .widget-free {
-      display: grid;
+    .widget-watermark {
       width: 100%;
       text-align: center; 
       font-family: Inter;
@@ -134,14 +134,6 @@
       height: 40px;
       border-radius: 10px;
     }
-    .widget-free-text {
-      justify-self: center;
-      background: white;
-      width: fit-content;
-      padding: 8px 20px;
-      border-radius: 10px;
-      cursor: pointer;
-    }
   </style>
 
   <div class="widget-container">
@@ -159,13 +151,17 @@
       </div>
       <div class="widget-text-form">
         <input placeholder="Email" class="widget-form"/>
-        <div onclick="submitEmail()" class="widget-button">Signup</div>
+        <div onclick="submitEmail()" class="widget-button">Sign up</div>
       </div>
+      <p class="widget-watermark">Made for free with Waiitr</p>
     </div>
-    <iframe class="checkAnimation-white" style="display: none; border: none; background: transparent; padding: 75px 0" width="300" height="150" src="https://rive.app/s/8ta7b0KiBEGKScGbvlvgfQ/embed" allowfullscreen></iframe>
-    <iframe class="checkAnimation-black" style="display: none; border: none; background: transparent; padding: 0" width="300" height="150" src="https://rive.app/s/ftY7Nv5Cg0mvHIn9Yu44wg/embed" allowfullscreen></iframe>
-    <div class="widget-free">
-      <p class="widget-free-text">Made for free with Waiitr</p>
+    <div style="display: none; flex-direction: column" class="checkAnimation-white">
+      <iframe style="border: none; background: transparent; padding: 75px 0" width="300" height="150" src="https://rive.app/s/8ta7b0KiBEGKScGbvlvgfQ/embed" allowfullscreen></iframe>
+      <p style="textAlign: center; color: white" class="widget-watermark">Made for free with Waiitr</p>
+    </div>
+    <div style="display: none; flex-direction: column" class="checkAnimation-black">
+      <iframe style="border: none; background: transparent; padding: 0" width="300" height="150" src="https://rive.app/s/ftY7Nv5Cg0mvHIn9Yu44wg/embed" allowfullscreen></iframe>
+      <p style="textAlign: center; color: black" class="widget-watermark">Made for free with Waiitr</p>
     </div>
   </div>
 
@@ -194,6 +190,7 @@
     const textColor = urlParams.get("textColor");
     if (textColor) {
       document.querySelector(".widget-header").style.color = textColor;
+      document.querySelector(".widget-watermark").style.color = textColor;
     }
     const formColor = urlParams.get("formColor");
     if (formColor) {
@@ -213,7 +210,7 @@
     const textAlign = urlParams.get("textAlign");
     if (textAlign) {
       document.querySelector(".widget-header").style.textAlign = textAlign;
-      document.querySelector(".widget-free-text").style.justifySelf = textAlign;
+      document.querySelector(".widget-watermark").style.textAlign = textAlign;
     }
     const buttonStyle = urlParams.get("buttonStyle");
     if (buttonStyle === "text") {
@@ -225,7 +222,7 @@
 
       const apiEndPoint = "https://e0b2-78-156-111-211.ngrok-free.app/api/handle_new_signup"
 
-      if (email.length < 9) {
+      if (!email.includes("@")) {
         document.querySelector(".widget-form").style.border = "1px solid red";
         document.querySelector(".widget-icon-form").style.border = "1px solid red";
         return
@@ -250,7 +247,7 @@
       }
 
       let checkAnimation = document.querySelector(`.checkAnimation-${backgroundColor ? isItWhite(backgroundColor) === "#E9EAEC" ? "black" : "white" : "black"}`)
-      checkAnimation.style.display = "block"
+      checkAnimation.style.display = "flex"
       document.querySelector(".widget").style.display = "none";
     }
 
