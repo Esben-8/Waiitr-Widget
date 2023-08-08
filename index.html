@@ -1,9 +1,12 @@
 <html>
   <head>
     <!-- Other meta tags and stylesheets -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
   </head>
-  
+
   <style>
     .widget-container {
       background-color: transparent; /* You can set this to any background color you desire or use a CSS variable for dynamic value */
@@ -16,10 +19,10 @@
       padding: 30px 40px 0;
       border-radius: 10px;
       border: 1px solid;
-      border-color: #E9EAEC;
+      border-color: #e9eaec;
       gap: 15px;
       max-width: 400px;
-      width: 98%;
+      width: calc(100%-40px);
       display: flex;
       flex-direction: column;
       background-color: white;
@@ -40,19 +43,19 @@
       width: 100%;
     }
     .widget-header-divider {
-      margin: 10px 20px; 
+      margin: 10px 20px;
       width: 2px;
       border-radius: 100px;
-      background-color: #767C80;
+      background-color: #767c80;
       display: none;
     }
     .widget-subheader {
-      align-self: center; 
+      align-self: center;
       text-align: center;
       font-size: 20px;
       font-family: Inter;
       font-weight: 700;
-      color: #767C80;
+      color: #767c80;
       width: 100%;
       display: none;
     }
@@ -60,30 +63,28 @@
       display: none;
     }
     .widget-form {
-      background: #F3F5F8;
+      background: #f3f5f8;
       height: 45px;
       width: 100%;
       padding: 0 15px;
       border: 1px solid;
-      border-color: #E9EAEC;
+      border-color: #e9eaec;
       font-family: Inter;
       font-weight: 500;
       border-radius: 10px;
-      margin-bottom: 20px
-      
+      margin-bottom: 20px;
     }
     .widget-form::placeholder {
-      font-size: 14px
-      
+      font-size: 14px;
     }
     .widget-form:focus-visible {
-      outline: none
+      outline: none;
     }
     .widget-button {
       display: grid;
-      cursor: pointer; 
+      cursor: pointer;
       place-items: center;
-      background: #A235E6; 
+      background: #a235e6;
       height: 45px;
       width: 100%;
       color: white;
@@ -94,7 +95,7 @@
     }
     .widget-watermark {
       width: 100%;
-      text-align: center; 
+      text-align: center;
       font-family: Inter;
       font-weight: 500;
       font-size: 14px;
@@ -103,16 +104,16 @@
     .widget-icon-form {
       display: grid;
       align-items: center;
-      border-radius: 10px; 
+      border-radius: 10px;
       padding: 10px 15px 10px 20px;
-      background: #F3F5F8; 
+      background: #f3f5f8;
       border: 1px solid;
-      border-color: #F3F5F8;
+      border-color: #f3f5f8;
       width: -webkit-fill-available;
       grid-template-columns: auto auto;
     }
     .widget-icon-field {
-      background: #F3F5F8;
+      background: #f3f5f8;
       height: 45px;
       width: 100%;
       padding: 0;
@@ -122,14 +123,14 @@
       border-radius: 10px;
     }
     .widget-icon-field:focus-visible {
-      outline: none
+      outline: none;
     }
     .widget-icon-button {
       display: grid;
       box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.1);
       justify-self: flex-end;
       background: white;
-      cursor: pointer; 
+      cursor: pointer;
       place-items: center;
       aspect-ratio: 1;
       height: 40px;
@@ -145,88 +146,115 @@
         <p class="widget-subheader"></p>
       </div>
       <div class="widget-icon-form">
-        <input placeholder="Email" class="widget-icon-field"/>
+        <input placeholder="Email" class="widget-icon-field" />
         <div onclick="submitEmail()" class="widget-icon-button">
           <i style="color: #242526" class="fas fa-handshake"></i>
         </div>
       </div>
       <div class="widget-text-form">
-        <input placeholder="Email" class="widget-form"/>
+        <input placeholder="Email" class="widget-form" />
         <div onclick="submitEmail()" class="widget-button">Sign up</div>
       </div>
       <p class="widget-watermark">Made for free with Waiitr</p>
     </div>
-    <div style="display: none; flex-direction: column" class="checkAnimation-white">
-      <iframe style="border: none; background: transparent; padding: 75px 0" width="300" height="150" src="https://rive.app/s/8ta7b0KiBEGKScGbvlvgfQ/embed" allowfullscreen></iframe>
-      <p style="textAlign: center; color: white" class="widget-watermark">Made for free with Waiitr</p>
+    <div
+      style="display: none; flex-direction: column"
+      class="checkAnimation-white"
+    >
+      <iframe
+        style="border: none; background: transparent; padding: 75px 0"
+        width="300"
+        height="150"
+        src="https://rive.app/s/8ta7b0KiBEGKScGbvlvgfQ/embed"
+        allowfullscreen
+      ></iframe>
+      <p style="textalign: center; color: white" class="widget-watermark">
+        Made for free with Waiitr
+      </p>
     </div>
-    <div style="display: none; flex-direction: column" class="checkAnimation-black">
-      <iframe style="border: none; background: transparent; padding: 0" width="300" height="150" src="https://rive.app/s/ftY7Nv5Cg0mvHIn9Yu44wg/embed" allowfullscreen></iframe>
-      <p style="textAlign: center; color: black" class="widget-watermark">Made for free with Waiitr</p>
+    <div
+      style="display: none; flex-direction: column"
+      class="checkAnimation-black"
+    >
+      <iframe
+        style="border: none; background: transparent; padding: 0"
+        width="300"
+        height="150"
+        src="https://rive.app/s/ftY7Nv5Cg0mvHIn9Yu44wg/embed"
+        allowfullscreen
+      ></iframe>
+      <p style="textalign: center; color: black" class="widget-watermark">
+        Made for free with Waiitr
+      </p>
     </div>
   </div>
 
   <script>
-
     function isItWhite(color) {
-      if (color === "white" || /^#?(?:f{6}|f{3})$/i.test(color)) {
-          return "#E9EAEC"
+      if (color === 'white' || /^#?(?:f{6}|f{3})$/i.test(color)) {
+        return '#E9EAEC';
       } else {
-          return "transparent"
+        return 'transparent';
       }
     }
 
     const urlParams = new URLSearchParams(window.location.search);
-    const backgroundColor = urlParams.get("backgroundColor");
+    const backgroundColor = urlParams.get('backgroundColor');
     if (backgroundColor) {
-      document.querySelector(".widget").style.backgroundColor = backgroundColor;
-      document.querySelector(".widget").style.borderColor = isItWhite(backgroundColor)
+      document.querySelector('.widget').style.backgroundColor = backgroundColor;
+      document.querySelector('.widget').style.borderColor =
+        isItWhite(backgroundColor);
     }
-    const buttonColor = urlParams.get("buttonColor");
+    const buttonColor = urlParams.get('buttonColor');
     if (buttonColor) {
-      document.querySelector(".widget-button").style.backgroundColor = buttonColor;
-      document.querySelector(".widget-button").style.borderColor = isItWhite(buttonColor)
-      document.querySelector(".widget-button").style.color = isItWhite(buttonColor) === "#E9EAEC" ? "#242526" : "white"
+      document.querySelector('.widget-button').style.backgroundColor =
+        buttonColor;
+      document.querySelector('.widget-button').style.borderColor =
+        isItWhite(buttonColor);
+      document.querySelector('.widget-button').style.color =
+        isItWhite(buttonColor) === '#E9EAEC' ? '#242526' : 'white';
     }
-    const textColor = urlParams.get("textColor");
+    const textColor = urlParams.get('textColor');
     if (textColor) {
-      document.querySelector(".widget-header").style.color = textColor;
-      document.querySelector(".widget-watermark").style.color = textColor;
+      document.querySelector('.widget-header').style.color = textColor;
+      document.querySelector('.widget-watermark').style.color = textColor;
     }
-    const formColor = urlParams.get("formColor");
+    const formColor = urlParams.get('formColor');
     if (formColor) {
-      document.querySelector(".widget-form").style.backgroundColor = formColor;
-      document.querySelector(".widget-form").style.borderColor = isItWhite(formColor)
+      document.querySelector('.widget-form').style.backgroundColor = formColor;
+      document.querySelector('.widget-form').style.borderColor =
+        isItWhite(formColor);
     }
-    const header = urlParams.get("header");
+    const header = urlParams.get('header');
     if (header) {
-      document.querySelector(".widget-header").innerText = header;
+      document.querySelector('.widget-header').innerText = header;
     }
-    const subheader = urlParams.get("subheader");
+    const subheader = urlParams.get('subheader');
     if (subheader) {
-      document.querySelector(".widget-subheader").innerText = subheader;
-      document.querySelector(".widget-subheader").style.display = "block";
-      document.querySelector(".widget-header-divider").style.display = "block";
+      document.querySelector('.widget-subheader').innerText = subheader;
+      document.querySelector('.widget-subheader').style.display = 'block';
+      document.querySelector('.widget-header-divider').style.display = 'block';
     }
-    const textAlign = urlParams.get("textAlign");
+    const textAlign = urlParams.get('textAlign');
     if (textAlign) {
-      document.querySelector(".widget-header").style.textAlign = textAlign;
-      document.querySelector(".widget-watermark").style.textAlign = textAlign;
+      document.querySelector('.widget-header').style.textAlign = textAlign;
+      document.querySelector('.widget-watermark').style.textAlign = textAlign;
     }
-    const buttonStyle = urlParams.get("buttonStyle");
-    if (buttonStyle === "text") {
-      document.querySelector(".widget-text-form").style.display = "block";
-      document.querySelector(".widget-icon-form").style.display = "none";
+    const buttonStyle = urlParams.get('buttonStyle');
+    if (buttonStyle === 'text') {
+      document.querySelector('.widget-text-form').style.display = 'block';
+      document.querySelector('.widget-icon-form').style.display = 'none';
     }
 
     async function callAPIWithFetch(email, widgetId) {
+      const apiEndPoint =
+        'https://e0b2-78-156-111-211.ngrok-free.app/api/handle_new_signup';
 
-      const apiEndPoint = "https://e0b2-78-156-111-211.ngrok-free.app/api/handle_new_signup"
-
-      if (!email.includes("@")) {
-        document.querySelector(".widget-form").style.border = "1px solid red";
-        document.querySelector(".widget-icon-form").style.border = "1px solid red";
-        return
+      if (!email.includes('@')) {
+        document.querySelector('.widget-form').style.border = '1px solid red';
+        document.querySelector('.widget-icon-form').style.border =
+          '1px solid red';
+        return;
       }
 
       try {
@@ -234,12 +262,12 @@
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'ngrok-skip-browser-warning': 'true'
+            'ngrok-skip-browser-warning': 'true',
           },
           body: JSON.stringify({
             email: email,
             widgetId: widgetId,
-          })
+          }),
         });
 
         console.log(response);
@@ -247,24 +275,29 @@
         console.error('Fetch Error:', error);
       }
 
-      let checkAnimation = document.querySelector(`.checkAnimation-${backgroundColor ? isItWhite(backgroundColor) === "#E9EAEC" ? "black" : "white" : "black"}`)
-      checkAnimation.style.display = "flex"
-      document.querySelector(".widget").style.display = "none";
+      let checkAnimation = document.querySelector(
+        `.checkAnimation-${
+          backgroundColor
+            ? isItWhite(backgroundColor) === '#E9EAEC'
+              ? 'black'
+              : 'white'
+            : 'black'
+        }`
+      );
+      checkAnimation.style.display = 'flex';
+      document.querySelector('.widget').style.display = 'none';
     }
 
-
-    const widgetId = urlParams.get("widgetId");
+    const widgetId = urlParams.get('widgetId');
     async function submitEmail() {
-      
-      let textEmail = document.querySelector(".widget-form")
-      let iconEmail = document.querySelector(".widget-icon-field")
+      let textEmail = document.querySelector('.widget-form');
+      let iconEmail = document.querySelector('.widget-icon-field');
 
-      if (buttonStyle === "text") {
-        callAPIWithFetch(textEmail.value, widgetId)
+      if (buttonStyle === 'text') {
+        callAPIWithFetch(textEmail.value, widgetId);
       } else {
-        callAPIWithFetch(iconEmail.value, widgetId)
+        callAPIWithFetch(iconEmail.value, widgetId);
       }
     }
-    
   </script>
 </html>
