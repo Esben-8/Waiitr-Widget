@@ -95,6 +95,10 @@
       font-weight: 600;
       border-radius: 10px;
       border: 1px solid transparent;
+      transition-duration: .3s;
+    }
+    .widget-button:hover {
+      opacity: .9;
     }
     .widget-watermark {
       width: 100%;
@@ -140,57 +144,63 @@
       aspect-ratio: 1;
       height: 40px;
       border-radius: 10px;
+      transition-duration: .3s;
+    }
+    .widget-icon-button:hover {
+      opacity: .9;
     }
   </style>
 
   <div class="widget-container">
     <div class="widget">
-      <div class="headers-container">
-        <p class="widget-header">Header</p>
-        <div class="widget-header-divider"></div>
-        <p class="widget-subheader"></p>
-      </div>
-      <div class="widget-icon-form">
-        <input placeholder="Email" class="widget-icon-field" />
-        <div onclick="submitEmail()" class="widget-icon-button">
-          <i style="color: #242526" class="fas fa-handshake"></i>
+      <div class="widget-content">
+        <div class="headers-container">
+          <p class="widget-header">Header</p>
+          <div class="widget-header-divider"></div>
+          <p class="widget-subheader"></p>
         </div>
+        <div class="widget-icon-form">
+          <input placeholder="Email" class="widget-icon-field" />
+          <div onclick="submitEmail()" class="widget-icon-button">
+            <i style="color: #242526" class="fas fa-handshake"></i>
+          </div>
+        </div>
+        <div class="widget-text-form">
+          <input placeholder="Email" class="widget-form" />
+          <div onclick="submitEmail()" class="widget-button">Sign up</div>
+        </div>
+        <p class="widget-watermark">Made for free with Waiitr</p>
       </div>
-      <div class="widget-text-form">
-        <input placeholder="Email" class="widget-form" />
-        <div onclick="submitEmail()" class="widget-button">Sign up</div>
-      </div>
-      <p class="widget-watermark">Made for free with Waiitr</p>
-    </div>
-    <div
+      <div
       style="display: none; flex-direction: column"
       class="checkAnimation-white"
-    >
-      <iframe
-        style="border: none; background: transparent; padding: 75px 0"
-        width="300"
-        height="150"
-        src="https://rive.app/s/8ta7b0KiBEGKScGbvlvgfQ/embed"
-        allowfullscreen
-      ></iframe>
-      <p style="textalign: center; color: white" class="widget-watermark">
-        Made for free with Waiitr
-      </p>
-    </div>
-    <div
-      style="display: none; flex-direction: column"
-      class="checkAnimation-black"
-    >
-      <iframe
-        style="border: none; background: transparent; padding: 0"
-        width="300"
-        height="150"
-        src="https://rive.app/s/ftY7Nv5Cg0mvHIn9Yu44wg/embed"
-        allowfullscreen
-      ></iframe>
-      <p style="textalign: center; color: black" class="widget-watermark">
-        Made for free with Waiitr
-      </p>
+      >
+        <iframe
+          style="margin: auto; border: none; background: transparent; padding: 75px 0"
+          width="300"
+          height="150"
+          src="https://rive.app/s/8ta7b0KiBEGKScGbvlvgfQ/embed"
+          allowfullscreen
+        ></iframe>
+        <p style="textalign: center; color: white" class="widget-watermark">
+          Made for free with Waiitr
+        </p>
+      </div>
+      <div
+        style="display: none; flex-direction: column"
+        class="checkAnimation-black"
+      >
+        <iframe
+          style="margin: auto; border: none; background: transparent; padding: 0"
+          width="300"
+          height="150"
+          src="https://rive.app/s/ftY7Nv5Cg0mvHIn9Yu44wg/embed"
+          allowfullscreen
+        ></iframe>
+        <p style="textalign: center; color: black" class="widget-watermark">
+          Made for free with Waiitr
+        </p>
+      </div>
     </div>
   </div>
 
@@ -257,7 +267,8 @@
       const apiEndPoint =
         'https://waiitr.esbenischeap.dev/api/handle_new_signup';
 
-      if (!email.includes('@')) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
         document.querySelector('.widget-form').style.border = '1px solid red';
         document.querySelector('.widget-icon-form').style.border =
           '1px solid red';
@@ -274,7 +285,7 @@
         }`
       );
       checkAnimation.style.display = 'flex';
-      document.querySelector('.widget').style.display = 'none';
+      document.querySelector('.widget-content').style.display = 'none';
 
       try {
         const response = await fetch(apiEndPoint, {
@@ -296,6 +307,9 @@
     }
 
     const widgetId = urlParams.get('widgetId');
+    if (!widgetId) {
+      document.querySelector('.widget').innerHTML = "<p style='padding-bottom: 25px; text-align: center; font-weight: 600; font-family: Inter; font-size: 18px'>Missing ID</p>"
+    }
     async function submitEmail() {
       let textEmail = document.querySelector('.widget-form');
       let iconEmail = document.querySelector('.widget-icon-field');
