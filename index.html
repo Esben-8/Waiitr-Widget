@@ -259,6 +259,18 @@
         return;
       }
 
+      let checkAnimation = document.querySelector(
+        `.checkAnimation-${
+          backgroundColor
+            ? isItWhite(backgroundColor) === '#E9EAEC'
+              ? 'black'
+              : 'white'
+            : 'black'
+        }`
+      );
+      checkAnimation.style.display = 'flex';
+      document.querySelector('.widget').style.display = 'none';
+
       try {
         const response = await fetch(apiEndPoint, {
           method: 'POST',
@@ -276,18 +288,6 @@
       } catch (error) {
         console.error('Fetch Error:', error);
       }
-
-      let checkAnimation = document.querySelector(
-        `.checkAnimation-${
-          backgroundColor
-            ? isItWhite(backgroundColor) === '#E9EAEC'
-              ? 'black'
-              : 'white'
-            : 'black'
-        }`
-      );
-      checkAnimation.style.display = 'flex';
-      document.querySelector('.widget').style.display = 'none';
     }
 
     const widgetId = urlParams.get('widgetId');
