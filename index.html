@@ -214,7 +214,7 @@
     }
 
     const urlParams = new URLSearchParams(window.location.search);
-    const backgroundColor = urlParams.get('backgroundColor');
+    const backgroundColor = urlParams.get('backgroundColor') ? urlParams.get('backgroundColor') : "transparent";
     if (backgroundColor) {
       document.querySelector('.widget').style.backgroundColor = backgroundColor;
       document.querySelector('.widget').style.borderColor =
